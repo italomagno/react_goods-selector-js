@@ -18,9 +18,9 @@ export const goods = [
 export const App = () =>{
   const [selectedGood, setSelectedGood] = useState('Jam');
 
-  function handleSelectedGood(good){
-    const selectedGood = goods.find((item) => item === good)
-    setSelectedGood(selectedGood)
+  function handleSelectedGood(goodName){
+    const good = goods.find((item) => item === goodName)
+    setSelectedGood(good)
   }
 
   function handleClearSelectedGood(){
@@ -44,7 +44,7 @@ export const App = () =>{
       <tbody>
         {
           goods.map(good => (
-            <tr data-cy="Good" className={`${selectedGood === good && "has-background-success-light"}`}>
+            <tr data-cy="Good" className={`${selectedGood === good ? "has-background-success-light" : ""}`}>
               {
                 good !== selectedGood ?  (<td>
                 <button data-cy="AddButton" onClick={()=>handleSelectedGood(good)} type="button" className="button">
